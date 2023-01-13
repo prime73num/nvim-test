@@ -111,6 +111,7 @@ function M.run_cmd(cmd, cfg)
     return
   end
   local supported, termExec = pcall(require, "nvim-test.terms." .. M.config.term)
+  termExec = M.config.termExec or termExec
   if not supported then
     return notifier:notify(string.format("Term: %s is not supported", M.config.term), 4)
   end
